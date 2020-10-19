@@ -35,9 +35,9 @@ import java.util.List;
  */
 public class StickerView extends FrameLayout {
 
-  private final boolean showIcons;
-  private final boolean showBorder;
-  private final boolean bringToFrontCurrentSticker;
+  protected final boolean showIcons;
+  protected final boolean showBorder;
+  protected final boolean bringToFrontCurrentSticker;
 
   @IntDef({
       ActionMode.NONE, ActionMode.DRAG, ActionMode.ZOOM_WITH_TWO_FINGER, ActionMode.ICON,
@@ -56,50 +56,50 @@ public class StickerView extends FrameLayout {
 
   private static final String TAG = "StickerView";
 
-  private static final int DEFAULT_MIN_CLICK_DELAY_TIME = 200;
+  protected static final int DEFAULT_MIN_CLICK_DELAY_TIME = 200;
 
   public static final int FLIP_HORIZONTALLY = 1;
   public static final int FLIP_VERTICALLY = 1 << 1;
 
-  private final List<Sticker> stickers = new ArrayList<>();
-  private final List<BitmapStickerIcon> icons = new ArrayList<>(4);
+  protected final List<Sticker> stickers = new ArrayList<>();
+  protected final List<BitmapStickerIcon> icons = new ArrayList<>(4);
 
-  private final Paint borderPaint = new Paint();
-  private final RectF stickerRect = new RectF();
+  protected final Paint borderPaint = new Paint();
+  protected final RectF stickerRect = new RectF();
 
-  private final Matrix sizeMatrix = new Matrix();
-  private final Matrix downMatrix = new Matrix();
-  private final Matrix moveMatrix = new Matrix();
+  protected final Matrix sizeMatrix = new Matrix();
+  protected final Matrix downMatrix = new Matrix();
+  protected final Matrix moveMatrix = new Matrix();
 
   // region storing variables
-  private final float[] bitmapPoints = new float[8];
-  private final float[] bounds = new float[8];
-  private final float[] point = new float[2];
-  private final PointF currentCenterPoint = new PointF();
-  private final float[] tmp = new float[2];
-  private PointF midPoint = new PointF();
+  protected final float[] bitmapPoints = new float[8];
+  protected final float[] bounds = new float[8];
+  protected final float[] point = new float[2];
+  protected final PointF currentCenterPoint = new PointF();
+  protected final float[] tmp = new float[2];
+  protected PointF midPoint = new PointF();
   // endregion
-  private final int touchSlop;
+  protected final int touchSlop;
 
-  private BitmapStickerIcon currentIcon;
+  protected BitmapStickerIcon currentIcon;
   //the first point down position
-  private float downX;
-  private float downY;
+  protected float downX;
+  protected float downY;
 
-  private float oldDistance = 0f;
-  private float oldRotation = 0f;
+  protected float oldDistance = 0f;
+  protected float oldRotation = 0f;
 
-  @ActionMode private int currentMode = ActionMode.NONE;
+  @ActionMode protected int currentMode = ActionMode.NONE;
 
-  private Sticker handlingSticker;
+  protected Sticker handlingSticker;
 
-  private boolean locked;
-  private boolean constrained;
+  protected boolean locked;
+  protected boolean constrained;
 
-  private OnStickerOperationListener onStickerOperationListener;
+  protected OnStickerOperationListener onStickerOperationListener;
 
-  private long lastClickTime = 0;
-  private int minClickDelayTime = DEFAULT_MIN_CLICK_DELAY_TIME;
+  protected long lastClickTime = 0;
+  protected int minClickDelayTime = DEFAULT_MIN_CLICK_DELAY_TIME;
 
   public StickerView(Context context) {
     this(context, null);
