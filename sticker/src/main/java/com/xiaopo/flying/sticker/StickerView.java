@@ -42,7 +42,7 @@ public class StickerView extends FrameLayout {
   @IntDef({
       ActionMode.NONE, ActionMode.DRAG, ActionMode.ZOOM_WITH_TWO_FINGER, ActionMode.ICON,
       ActionMode.CLICK
-  }) @Retention(RetentionPolicy.SOURCE) protected @interface ActionMode {
+  }) @Retention(RetentionPolicy.SOURCE) public @interface ActionMode {
     int NONE = 0;
     int DRAG = 1;
     int ZOOM_WITH_TWO_FINGER = 2;
@@ -51,7 +51,7 @@ public class StickerView extends FrameLayout {
   }
 
   @IntDef(flag = true, value = { FLIP_HORIZONTALLY, FLIP_VERTICALLY })
-  @Retention(RetentionPolicy.SOURCE) protected @interface Flip {
+  @Retention(RetentionPolicy.SOURCE) public @interface Flip {
   }
 
   private static final String TAG = "StickerView";
